@@ -1,7 +1,7 @@
 # Projeto C11: Análise Exploratória da Ajuda Internacional à Ucrânia
 
 
-Este projeto consiste em uma Análise Exploratória de Dados (EDA) sobre as alocações de ajuda internacional (financeira, militar e humanitária) destinadas à Ucrânia. Utilizando dados do arquivo `war.csv`, a análise é conduzida em um Jupyter Notebook (`war_project.ipynb`) para identificar padrões, tendências e perfis de doadores.
+Este projeto consiste em uma Análise Exploratória de Dados (EDA) sobre as alocações de ajuda internacional (financeira, militar e humanitária) destinadas à Ucrânia. Utilizando dados do arquivo `war.csv`, a análise é conduzida para identificar padrões, tendências e perfis de doadores.
 
 ## 📈 Análises Realizadas
 
