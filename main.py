@@ -18,7 +18,7 @@ bars1 = axs[0].bar(top5['Country'], top5['Total bilateral allocations($ billion)
 axs[0].bar_label(bars1, fmt='$%.2fB', padding=3, fontweight='bold')
 axs[0].set_xlabel('Países', fontweight='bold')
 axs[0].set_ylabel('Doações (em bilhões)', fontweight='bold')
-axs[0].set_title('Top 5 países que mais doaram para a Ucrânia (2024)', fontweight='bold')
+axs[0].set_title('Top 5 países que mais doaram para a Ucrânia', fontweight='bold')
 axs[0].grid(axis='y', linestyle='--', alpha=0.5)
 
 # Questão 2: Top 5 menores doadores
