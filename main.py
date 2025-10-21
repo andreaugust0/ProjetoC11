@@ -12,8 +12,8 @@ ds_filter['Total bilateral allocations($ billion)'] = pd.to_numeric(ds_filter['T
 top5 = ds_filter.sort_values(by='Total bilateral allocations($ billion)', ascending=False).head(5)
 
 plt.figure(figsize=(10, 6))
-barras = plt.bar(top5['Country'], top5['Total bilateral allocations($ billion)'], color='green')
-plt.bar_label(barras, fmt='%.2f', padding=3, fontweight='bold')
+barras = plt.bar(top5['Country'], top5['Total bilateral allocations($ billion)'], color='#2E86AB', alpha=0.8, edgecolor='black')
+plt.bar_label(barras, fmt='$%.2fB', padding=3, fontweight='bold')
 plt.xlabel('Países', fontweight='bold')
 plt.ylabel('Doações (em bilhões)', fontweight='bold')
 plt.title('Top 5 países que mais doaram para a Ucrânia (2024)', fontweight='bold')
@@ -27,8 +27,8 @@ last5 = last5.iloc[::-1]
 
 # Gráfico
 plt.figure(figsize=(10, 6))
-bars = plt.bar(last5['Country'], last5['Total bilateral allocations($ billion)'], color='red')
-plt.bar_label(bars, fmt='%.6f', padding=3, fontweight='bold')
+bars = plt.bar(last5['Country'], last5['Total bilateral allocations($ billion)'], color='#FFD700', alpha=0.8, edgecolor='black')
+plt.bar_label(bars, fmt='$%.6fB', padding=3, fontweight='bold')
 plt.xlabel('Países', fontweight='bold')
 plt.ylabel('Doações (em bilhões)', fontweight='bold')
 plt.title('Top 5 países que menos doaram para a Ucrânia', fontweight='bold')
@@ -578,8 +578,8 @@ top5 = ds_country.sort_values(by='Total bilateral allocations($ billion)', ascen
 
 plt.figure(figsize=(10, 6))
 
-barras = plt.bar(top5['Country'], top5['Total bilateral allocations($ billion)'], color='green')
-plt.bar_label(barras, fmt='%.2f', padding=3, fontweight='bold')
+barras = plt.bar(top5['Country'], top5['Total bilateral allocations($ billion)'], color='#2E86AB', alpha=0.8, edgecolor='black')
+plt.bar_label(barras, fmt='$%.2fB', padding=3, fontweight='bold')
 plt.xlabel('Países', fontweight='bold')
 plt.ylabel('Doações (em bilhões)', fontweight='bold')
 plt.title('Top 5 países da União Europeia que mais doaram', fontweight='bold')
