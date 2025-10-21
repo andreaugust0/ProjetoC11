@@ -2,42 +2,38 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Questão 1 -----------------------------------------------------------------------
+# # Questão 1 e 2 -----------------------------------------------------------------------
 ds = pd.read_csv('war.csv', encoding='utf-8')
 ds_filter = ds[['Country', 'Total bilateral allocations($ billion)']].copy()
-
 ds_filter['Total bilateral allocations($ billion)'] = ds_filter['Total bilateral allocations($ billion)'].replace('', 0)
 ds_filter['Total bilateral allocations($ billion)'] = pd.to_numeric(ds_filter['Total bilateral allocations($ billion)'], errors='coerce').fillna(0)
 
 top5 = ds_filter.sort_values(by='Total bilateral allocations($ billion)', ascending=False).head(5)
+last5 = ds_filter.sort_values(by='Total bilateral allocations($ billion)', ascending=True).head(5).iloc[::-1]
 
-plt.figure(figsize=(10, 6))
-barras = plt.bar(top5['Country'], top5['Total bilateral allocations($ billion)'], color='#2E86AB', alpha=0.8, edgecolor='black')
-plt.bar_label(barras, fmt='$%.2fB', padding=3, fontweight='bold')
-plt.xlabel('Países', fontweight='bold')
-plt.ylabel('Doações (em bilhões)', fontweight='bold')
-plt.title('Top 5 países que mais doaram para a Ucrânia (2024)', fontweight='bold')
-plt.grid(axis='y', linestyle='--', alpha=0.5)
-plt.tight_layout()
-plt.show()
+fig, axs = plt.subplots(1, 2, figsize=(16, 6))
 
-# Questão 2 –-------------------------------------------------------
-last5 = ds_filter.sort_values(by='Total bilateral allocations($ billion)', ascending=True).head(5)
-last5 = last5.iloc[::-1]
+# Questão 1: Top 5 maiores doadores
+bars1 = axs[0].bar(top5['Country'], top5['Total bilateral allocations($ billion)'], color='#2E86AB', alpha=0.8, edgecolor='black')
+axs[0].bar_label(bars1, fmt='$%.2fB', padding=3, fontweight='bold')
+axs[0].set_xlabel('Países', fontweight='bold')
+axs[0].set_ylabel('Doações (em bilhões)', fontweight='bold')
+axs[0].set_title('Top 5 países que mais doaram para a Ucrânia (2024)', fontweight='bold')
+axs[0].grid(axis='y', linestyle='--', alpha=0.5)
 
-# Gráfico
-plt.figure(figsize=(10, 6))
-bars = plt.bar(last5['Country'], last5['Total bilateral allocations($ billion)'], color='#FFD700', alpha=0.8, edgecolor='black')
-plt.bar_label(bars, fmt='$%.6fB', padding=3, fontweight='bold')
-plt.xlabel('Países', fontweight='bold')
-plt.ylabel('Doações (em bilhões)', fontweight='bold')
-plt.title('Top 5 países que menos doaram para a Ucrânia', fontweight='bold')
-plt.grid(axis='y', linestyle='--', alpha=0.5)
+# Questão 2: Top 5 menores doadores
+bars2 = axs[1].bar(last5['Country'], last5['Total bilateral allocations($ billion)'], color='#FFD700', alpha=0.8, edgecolor='black')
+axs[1].bar_label(bars2, fmt='$%.6fB', padding=3, fontweight='bold')
+axs[1].set_xlabel('Países', fontweight='bold')
+axs[1].set_ylabel('Doações (em bilhões)', fontweight='bold')
+axs[1].set_title('Top 5 países que menos doaram para a Ucrânia', fontweight='bold')
+axs[1].grid(axis='y', linestyle='--', alpha=0.5)
+
 plt.tight_layout()
 plt.show()
 
 # Questão 3 e 4 ----------------------------------------------------------------------------------
-# converter colunas numéricas
+#converter colunas numéricas
 df = pd.read_csv('war.csv', encoding='utf-8')
 df['GDP in 2021($ billion)'] = df['GDP in 2021($ billion)'].astype(str).str.replace(',', '').astype(float)
 df['Total bilateral commitments($ billion)'] = pd.to_numeric(df['Total bilateral commitments($ billion)'], errors='coerce').fillna(0)
@@ -548,7 +544,7 @@ for ax, (df, coluna, titulo) in zip(axes, perfis):
         autopct='%1.1f%%',
         startangle=90,
         colors=cores_usadas,
-        textprops={'color': 'white', 'weight': 'bold'}
+        textprops={'color': 'black', 'weight': 'bold'}
     )
 
     ax.set_title(f'Perfil {titulo}', fontsize=14, fontweight='bold')
